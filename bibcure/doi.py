@@ -1,17 +1,18 @@
-
-from __future__ import unicode_literals, print_function, absolute_import
+from __future__ import absolute_import, print_function, unicode_literals
 
 from builtins import input
+
 from doi2bib.crossref import get_bib_from_doi
-import bibtexparser
+
+from .parsing import loads_bibtex
 
 
 def update_bib(bib):
     bib_id = bib["ID"]
     if "doi" in bib:
-            found, bib_string = get_bib_from_doi(bib["doi"])
-            if found:
-                bib = bibtexparser.loads(bib_string).entries[0]
+        found, bib_string = get_bib_from_doi(bib["doi"])
+        if found:
+            bib = loads_bibtex(bib_string).entries[0]
 
     bib["ID"] = bib_id
     return bib

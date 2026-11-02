@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bibcure"
+version = "0.3.0"
+description = "Helps you to have a better bibtex file"
+readme = { file = "README", content-type = "text/x-rst" }
+license = "AGPL-3.0-or-later"
+authors = [{ name = "Bruno Messias", email = "messias.physics@gmail.com" }]
+requires-python = ">=3.14"
+keywords = [
+    "bibtex",
+    "arxiv",
+    "doi",
+    "abbreviate",
+    "science",
+    "scientific-journals",
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python",
+    "Topic :: Text Processing :: Markup :: LaTeX",
+]
+dependencies = [
+    "bibtexparser<2",
+    "future",
+    "doi2bib",
+    "title2bib",
+    "arxivcheck",
+    "setuptools<82",
+]
+
+[project.urls]
+Homepage = "https://github.com/bibcure/bibcure"
+Repository = "https://github.com/bibcure/bibcure"
+
+[tool.setuptools]
+include-package-data = true
+script-files = ["bibcure/bin/bibcure"]
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["build", "build.*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+bibcure = ["data/db_abbrev.json"]
